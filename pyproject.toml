@@ -1,0 +1,153 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keap-export"
+version = "0.1.0"
+description = "Full-fidelity Keap CRM data export to PostgreSQL with relationship preservation and validation"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "Ener Systems", email = "rene@ener-systems.com"}
+]
+keywords = ["keap", "crm", "export", "postgresql", "etl", "data-migration"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Database",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+    "tenacity>=8.2.0",
+    "psycopg2-binary>=2.9.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+    "pre-commit>=3.3.0",
+]
+export = [
+    "pandas>=2.0.0",
+    "pyarrow>=12.0.0",
+    "openpyxl>=3.1.0",
+]
+
+[project.scripts]
+keap-export = "keap_export.cli:main"
+sync-contacts = "src.scripts.sync_contacts:main"
+sync-companies = "src.scripts.sync_companies:main"
+sync-tags = "src.scripts.sync_tags:main"
+sync-opportunities = "src.scripts.sync_opportunities:main"
+sync-tasks = "src.scripts.sync_tasks:main"
+sync-notes = "src.scripts.sync_notes:main"
+sync-products = "src.scripts.sync_products:main"
+sync-orders = "src.scripts.sync_orders:main"
+sync-payments = "src.scripts.sync_payments:main"
+sync-all = "src.scripts.sync_all:main"
+
+[project.urls]
+Homepage = "https://github.com/rmmATenersystemscom/es-keap-database"
+Repository = "https://github.com/rmmATenersystemscom/es-keap-database"
+Documentation = "https://github.com/rmmATenersystemscom/es-keap-database#readme"
+Issues = "https://github.com/rmmATenersystemscom/es-keap-database/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["keap_export*"]
+
+[tool.setuptools.package-data]
+keap_export = ["py.typed"]
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "psycopg2.*",
+    "tenacity.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+    "--tb=short",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
