@@ -1,0 +1,50 @@
+id,contact_id,opportunity_id,title,body,owner_id,created_at,updated_at,raw,custom_fields,note_type
+30166,22458,,turboDial: Call from PC - Recorded,"02/03/2023 spoke to gk and said that dm is not in the office today he's in the field. will send an email today - AVV
+______
+
+turboDial Recorded Conversation
+
+turboDial Conversation: +15048375666 Started at: Fri, 03 Feb 2023 11:24:45 -0600
+Caller ID was: +19858710333
+
+Twilio ID=CA449bd1d2fd081521151eae5155b9e4d9
+Twilio ID=CA3d942b265f4dacebbb90ca3c7c8bb632::",,2023-02-03 17:24:45+00:00,,"{'id': 30166, 'body': ""02/03/2023 spoke to gk and said that dm is not in the office today he's in the field. will send an email today - AVV\n______\n\nturboDial Recorded Conversation\n\nturboDial Conversation: +15048375666 Started at: Fri, 03 Feb 2023 11:24:45 -0600\nCaller ID was: +19858710333\n\nTwilio ID=CA449bd1d2fd081521151eae5155b9e4d9\nTwilio ID=CA3d942b265f4dacebbb90ca3c7c8bb632::"", 'type': 'Call', 'title': 'turboDial: Call from PC - Recorded', 'user_id': 26764, 'contact_id': 22458, 'date_created': '2023-02-03T17:24:45Z', 'last_updated': '2023-02-03T17:26:03Z', 'last_updated_by': {'user_id': 26764, 'given_name': 'Alex', 'family_name': 'Villota'}}",,
+30168,30254,,turboDial: Call from PC - Left Message (01.25.23 (30s)) - Recorded,"turboDial Recorded Conversation
+
+02/03/2023 left message on their general voicemail. - AVV
+______
+
+Called & left message (01.25.23 (30s)): 
+turboDial Conversation: +12257661010 Started at: Fri, 03 Feb 2023 11:31:29 -0600
+Caller ID was: +19858710333
+
+Twilio ID=CA71dfd3374712df24f8b7f3f1b83a712b
+Twilio ID=CAe0985f93208a470a6b84591182386ad6::",,2023-02-03 17:31:29+00:00,,"{'id': 30168, 'body': 'turboDial Recorded Conversation\n\n02/03/2023 left message on their general voicemail. - AVV\n______\n\nCalled & left message (01.25.23 (30s)): \nturboDial Conversation: +12257661010 Started at: Fri, 03 Feb 2023 11:31:29 -0600\nCaller ID was: +19858710333\n\nTwilio ID=CA71dfd3374712df24f8b7f3f1b83a712b\nTwilio ID=CAe0985f93208a470a6b84591182386ad6::', 'type': 'Call', 'title': 'turboDial: Call from PC - Left Message (01.25.23 (30s)) - Recorded', 'user_id': 26764, 'contact_id': 30254, 'date_created': '2023-02-03T17:31:29Z', 'last_updated': '2023-02-03T17:33:41Z', 'last_updated_by': {'user_id': 26764, 'given_name': 'Alex', 'family_name': 'Villota'}}",,
+30170,27990,,turboDial: Notes,"02/03/2023 no answer. phone just keeps on ringing - AVV
+______
+
+
+Twilio ID=NoCallSID",,2023-02-03 17:40:14+00:00,,"{'id': 30170, 'body': '02/03/2023 no answer. phone just keeps on ringing - AVV\n______\n\n\nTwilio ID=NoCallSID', 'type': None, 'title': 'turboDial: Notes', 'user_id': 26764, 'contact_id': 27990, 'date_created': '2023-02-03T17:40:14Z', 'last_updated': '2023-02-03T17:40:15Z', 'last_updated_by': {'user_id': 26764, 'given_name': 'Alex', 'family_name': 'Villota'}}",,
+30172,30210,,turboDial: Call from PC - Recorded,"02/03/2023 Spoke to GK and said that Alicia is not in today. GK doesn't know the dm's email. - AVV
+______
+
+02/03/2023 Spoke to GK and said that Alicia is not in today. GK doesn't know the dm's email. - AVV
+______
+
+turboDial Recorded Conversation
+
+turboDial Conversation: +15047371300 Started at: Fri, 03 Feb 2023 11:40:56 -0600
+Caller ID was: +19858710333
+
+Twilio ID=CAa6fc8723eadb3b3a3ec47f1bf9be1de4
+Twilio ID=CAffd0aee6fbda859696b7156a8191081d::",,2023-02-03 17:40:56+00:00,,"{'id': 30172, 'body': ""02/03/2023 Spoke to GK and said that Alicia is not in today. GK doesn't know the dm's email. - AVV\n______\n\n02/03/2023 Spoke to GK and said that Alicia is not in today. GK doesn't know the dm's email. - AVV\n______\n\nturboDial Recorded Conversation\n\nturboDial Conversation: +15047371300 Started at: Fri, 03 Feb 2023 11:40:56 -0600\nCaller ID was: +19858710333\n\nTwilio ID=CAa6fc8723eadb3b3a3ec47f1bf9be1de4\nTwilio ID=CAffd0aee6fbda859696b7156a8191081d::"", 'type': 'Call', 'title': 'turboDial: Call from PC - Recorded', 'user_id': 26764, 'contact_id': 30210, 'date_created': '2023-02-03T17:40:56Z', 'last_updated': '2023-02-03T17:42:04Z', 'last_updated_by': {'user_id': 26764, 'given_name': 'Alex', 'family_name': 'Villota'}}",,
+30174,4063,,turboDial: Call from PC - Recorded,"02/03/2023 left message to the GK because the dm's not available. - AVV
+______
+
+turboDial Recorded Conversation
+
+turboDial Conversation: +19853275266 Started at: Fri, 03 Feb 2023 11:43:06 -0600
+Caller ID was: +19858710333
+
+Twilio ID=CA1f28f83561de1855764cef4bf78e961f
+Twilio ID=CA9826d4a6c84f6f05424a5a40baccf3bf::",,2023-02-03 17:43:06+00:00,,"{'id': 30174, 'body': ""02/03/2023 left message to the GK because the dm's not available. - AVV\n______\n\nturboDial Recorded Conversation\n\nturboDial Conversation: +19853275266 Started at: Fri, 03 Feb 2023 11:43:06 -0600\nCaller ID was: +19858710333\n\nTwilio ID=CA1f28f83561de1855764cef4bf78e961f\nTwilio ID=CA9826d4a6c84f6f05424a5a40baccf3bf::"", 'type': 'Call', 'title': 'turboDial: Call from PC - Recorded', 'user_id': 26764, 'contact_id': 4063, 'date_created': '2023-02-03T17:43:06Z', 'last_updated': '2023-02-03T17:44:55Z', 'last_updated_by': {'user_id': 26764, 'given_name': 'Alex', 'family_name': 'Villota'}}",,

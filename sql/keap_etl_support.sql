@@ -52,15 +52,36 @@ create table if not exists keap_meta.table_snapshot (
 create or replace function keap_meta.table_digest(_schema text, _table text)
 returns table(row_count bigint, id_min bigint, id_max bigint, checksum_md5 text)
 language plpgsql as $$
-declare sql text;
+declare
+  sql text;
+  has_id_col boolean;
 begin
-  sql := format($f$
-    select count(*)::bigint as row_count,
-           min(id)::bigint as id_min,
-           max(id)::bigint as id_max,
-           md5(string_agg(id::text, ',' order by id)) as checksum_md5
-    from %I.%I
-  $f$, _schema, _table);
+  -- Check if table has an 'id' column
+  select exists(
+    select 1 from information_schema.columns 
+    where table_schema = _schema and table_name = _table and column_name = 'id'
+  ) into has_id_col;
+  
+  if has_id_col then
+    -- Standard table with id column
+    sql := format($f$
+      select count(*)::bigint as row_count,
+             min(id)::bigint as id_min,
+             max(id)::bigint as id_max,
+             md5(string_agg(id::text, ',' order by id)) as checksum_md5
+      from %I.%I
+    $f$, _schema, _table);
+  else
+    -- Table without id column (like contact_tags with composite PK)
+    sql := format($f$
+      select count(*)::bigint as row_count,
+             null::bigint as id_min,
+             null::bigint as id_max,
+             md5(string_agg(ctid::text, ',' order by ctid)) as checksum_md5
+      from %I.%I
+    $f$, _schema, _table);
+  end if;
+  
   return query execute sql;
 end $$;
 

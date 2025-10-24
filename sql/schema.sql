@@ -96,7 +96,7 @@ create table if not exists keap.opportunities (
     id bigint primary key,
     contact_id bigint references keap.contacts(id),
     company_id bigint references keap.companies(id),
-    name text not null,
+    name text,
     stage_id bigint references keap.stages(id),
     pipeline_id bigint references keap.pipelines(id),
     value decimal(15,2),

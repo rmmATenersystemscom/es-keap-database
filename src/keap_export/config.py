@@ -2,6 +2,10 @@ from __future__ import annotations
 import os, json
 from dataclasses import dataclass
 from typing import Optional
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 @dataclass
 class Settings:
@@ -11,6 +15,8 @@ class Settings:
     redirect_uri: Optional[str] = os.getenv("KEAP_REDIRECT_URI")
     api_key: Optional[str] = os.getenv("KEAP_API_KEY")
     token_file: str = os.getenv("KEAP_TOKEN_FILE", ".keap_tokens.json")
+    log_level: str = os.getenv("LOG_LEVEL", "INFO")
+    log_format: str = os.getenv("LOG_FORMAT", "json")
 
     db_host: str = os.getenv("DB_HOST", "localhost")
     db_port: int = int(os.getenv("DB_PORT", "5432"))

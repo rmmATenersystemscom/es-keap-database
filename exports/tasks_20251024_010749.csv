@@ -1,0 +1,46 @@
+id,contact_id,opportunity_id,title,description,due_date,completed_date,owner_id,created_at,updated_at,raw,custom_fields,reminder_time,priority
+10700,,,Clean Lead,"Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.
+
+John Lemoine
+Louisiana Medical Mutual Insurance Company 
+
+(504) 831-3756, 
+
+, 
+https://sn439.infusionsoft.com/app/contact/create?addingFormId=136&contactId=2776",2022-03-21 05:00:00+00:00,,,,,"{'id': 10700, 'url': 'https://api.infusionsoft.com/crm/rest/v1/tasks/10700', 'type': 'To-do', 'title': 'Clean Lead', 'contact': {'id': 2776, 'email': None, 'last_name': 'Lemoine', 'first_name': 'John'}, 'user_id': 4, 'due_date': '2022-03-21T05:00:00.000Z', 'priority': 2, 'completed': False, 'funnel_id': 202, 'jgraph_id': 2700, 'description': 'Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.\n\nJohn Lemoine\nLouisiana Medical Mutual Insurance Company\u2028\n\n(504) 831-3756, \n\n, \nhttps://sn439.infusionsoft.com/app/contact/create?addingFormId=136&contactId=2776', 'remind_time': None, 'creation_date': '2022-03-21T19:34:45.000Z', 'completion_date': None, 'modification_date': '2022-03-21T19:34:45.000Z'}",,,
+11012,,,Clean Lead,"Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.
+
+Sylvia Rushing
+Pathfinders Healthcare 
+Administrator
+(504) 242-1122, 
+sarushing@aol.com
+, 
+https://sn439.infusionsoft.com/app/contact/create?addingFormId=136&contactId=3514",2022-03-21 05:00:00+00:00,,,,,"{'id': 11012, 'url': 'https://api.infusionsoft.com/crm/rest/v1/tasks/11012', 'type': 'To-do', 'title': 'Clean Lead', 'contact': {'id': 3514, 'email': 'sarushing@aol.com', 'last_name': 'Rushing', 'first_name': 'Sylvia'}, 'user_id': 4, 'due_date': '2022-03-21T05:00:00.000Z', 'priority': 2, 'completed': False, 'funnel_id': 202, 'jgraph_id': 2700, 'description': 'Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.\n\nSylvia Rushing\nPathfinders Healthcare\u2028\nAdministrator\n(504) 242-1122, \nsarushing@aol.com\n, \nhttps://sn439.infusionsoft.com/app/contact/create?addingFormId=136&contactId=3514', 'remind_time': None, 'creation_date': '2022-03-21T19:37:30.000Z', 'completion_date': None, 'modification_date': '2022-03-21T19:37:30.000Z'}",,,
+12300,,,Clean Lead,"Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.
+
+Ken Sills
+Hammonds, Sills, Adkins & Guice LLP 
+Managing Partner
+(225) 923-3462, 
+ksills@hamsil.com
+, 
+",2022-05-04 05:00:00+00:00,,,,,"{'id': 12300, 'url': 'https://api.infusionsoft.com/crm/rest/v1/tasks/12300', 'type': 'To-do', 'title': 'Clean Lead', 'contact': {'id': 298, 'email': 'ksills@hamsil.com', 'last_name': 'Sills', 'first_name': 'Ken'}, 'user_id': 4, 'due_date': '2022-05-04T05:00:00.000Z', 'priority': 2, 'completed': False, 'funnel_id': 202, 'jgraph_id': 2700, 'description': 'Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.\n\nKen Sills\nHammonds, Sills, Adkins & Guice LLP\u2028\nManaging Partner\n(225) 923-3462, \nksills@hamsil.com\n, \n', 'remind_time': None, 'creation_date': '2022-05-04T18:29:03.000Z', 'completion_date': None, 'modification_date': '2022-05-04T18:29:03.000Z'}",,,
+12302,,,Clean Lead,"Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.
+
+Andrew Lukinovich
+Lukinovich APLC 
+
+(504) 818-0401, 
+drew@lukinovichlaw.com
+, 
+",2022-05-04 05:00:00+00:00,,,,,"{'id': 12302, 'url': 'https://api.infusionsoft.com/crm/rest/v1/tasks/12302', 'type': 'To-do', 'title': 'Clean Lead', 'contact': {'id': 324, 'email': 'drew@lukinovichlaw.com', 'last_name': 'Lukinovich', 'first_name': 'Andrew'}, 'user_id': 4, 'due_date': '2022-05-04T05:00:00.000Z', 'priority': 2, 'completed': False, 'funnel_id': 202, 'jgraph_id': 2700, 'description': 'Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.\n\nAndrew Lukinovich\nLukinovich APLC\u2028\n\n(504) 818-0401, \ndrew@lukinovichlaw.com\n, \n', 'remind_time': None, 'creation_date': '2022-05-04T18:29:04.000Z', 'completion_date': None, 'modification_date': '2022-05-04T18:29:04.000Z'}",,,
+12306,,,Clean Lead,"Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.
+
+Julie Merritt
+The Javier Law Firm 
+
+(504) 599-8570, 
+juliem@javierlawfirm.com
+, 
+",2022-05-04 05:00:00+00:00,,,,,"{'id': 12306, 'url': 'https://api.infusionsoft.com/crm/rest/v1/tasks/12306', 'type': 'To-do', 'title': 'Clean Lead', 'contact': {'id': 354, 'email': 'juliem@javierlawfirm.com', 'last_name': 'Merritt', 'first_name': 'Julie'}, 'user_id': 4, 'due_date': '2022-05-04T05:00:00.000Z', 'priority': 2, 'completed': False, 'funnel_id': 202, 'jgraph_id': 2700, 'description': 'Contact needs to be cleaned using the MAP 2.0 - Lead Manager/Scrub Update Form.\n\nJulie Merritt\nThe Javier Law Firm\u2028\n\n(504) 599-8570, \njuliem@javierlawfirm.com\n, \n', 'remind_time': None, 'creation_date': '2022-05-04T18:29:05.000Z', 'completion_date': None, 'modification_date': '2022-05-04T18:29:05.000Z'}",,,

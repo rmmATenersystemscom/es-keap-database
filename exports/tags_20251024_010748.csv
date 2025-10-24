@@ -1,0 +1,6 @@
+id,name,description,created_at,updated_at,raw
+781,11/26/2018 3:57 PM,Auto-created Mon Nov 26 15:57:16 EST 2018,,,"{'id': 781, 'name': '11/26/2018 3:57 PM', 'category': {'id': 26, 'name': 'Imported', 'description': None}, 'description': 'Auto-created Mon Nov 26 15:57:16 EST 2018'}"
+3548,12/13/2022 3:10 PM,Auto-created Tue Dec 13 15:10:44 EST 2022,,,"{'id': 3548, 'name': '12/13/2022 3:10 PM', 'category': {'id': 26, 'name': 'Imported', 'description': None}, 'description': 'Auto-created Tue Dec 13 15:10:44 EST 2022'}"
+3562,12/16/2022 9:01 AM,Auto-created Fri Dec 16 09:01:05 EST 2022,,,"{'id': 3562, 'name': '12/16/2022 9:01 AM', 'category': {'id': 26, 'name': 'Imported', 'description': None}, 'description': 'Auto-created Fri Dec 16 09:01:05 EST 2022'}"
+340,RR - 10. Marketing - RR - Top 10 Hackers Free Report to Audit/Consult: 05.0 Exit - Not Qualified,,,,"{'id': 340, 'name': 'RR - 10. Marketing - RR - Top 10 Hackers Free Report to Audit/Consult: 05.0 Exit - Not Qualified', 'category': {'id': 18, 'name': '02. History', 'description': None}, 'description': None}"
+1158,RR - 10. Marketing - RR - Win 7/Server 8 EOL: 01.0 Milestone - On Deck,,,,"{'id': 1158, 'name': 'RR - 10. Marketing - RR - Win 7/Server 8 EOL: 01.0 Milestone - On Deck', 'category': {'id': 18, 'name': '02. History', 'description': None}, 'description': None}"

@@ -38,7 +38,8 @@ help:
 
 # Installation
 install:
-	pip install -r requirements.txt
+	python3 -m venv .venv
+	.venv/bin/pip install -r requirements.txt
 
 # Database setup
 setup-db:
@@ -59,43 +60,43 @@ clean:
 
 # Authentication test
 auth-test:
-	python src/scripts/sample_connect.py
+	.venv/bin/python src/scripts/sample_connect.py
 
 # Sync operations
 sync-all:
-	python -m src.scripts.sync_all
+	.venv/bin/python src/scripts/sync_all.py
 
 sync-contacts:
-	python -m src.scripts.sync_contacts
+	.venv/bin/python src/scripts/sync_contacts.py
 
 sync-companies:
-	python -m src.scripts.sync_companies
+	.venv/bin/python src/scripts/sync_companies.py
 
 sync-tags:
-	python -m src.scripts.sync_tags
+	.venv/bin/python src/scripts/sync_tags.py
 
 sync-opportunities:
-	python -m src.scripts.sync_opportunities
+	.venv/bin/python src/scripts/sync_opportunities.py
 
 sync-tasks:
-	python -m src.scripts.sync_tasks
+	.venv/bin/python src/scripts/sync_tasks.py
 
 sync-notes:
-	python -m src.scripts.sync_notes
+	.venv/bin/python src/scripts/sync_notes.py
 
 sync-products:
-	python -m src.scripts.sync_products
+	.venv/bin/python src/scripts/sync_products.py
 
 sync-orders:
-	python -m src.scripts.sync_orders
+	.venv/bin/python src/scripts/sync_orders.py
 
 sync-payments:
-	python -m src.scripts.sync_payments
+	.venv/bin/python src/scripts/sync_payments.py
 
 # Validation
 run-validation:
 	@echo "Running database validation..."
-	psql -h $$DB_HOST -U $$DB_USER -d $$DB_NAME -f sql/keap_validation.sql
+	.venv/bin/python src/scripts/run_validation.py
 
 # Testing
 test:

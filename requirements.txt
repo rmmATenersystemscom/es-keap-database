@@ -3,3 +3,5 @@ python-dotenv
 tenacity
 psycopg2-binary
 tqdm
+pandas
+pyarrow

@@ -10,6 +10,11 @@ class KeapClient:
         self.cfg = cfg
         self.session = requests.Session()
         self.base = cfg.base_url.rstrip("/")
+        # Metrics tracking
+        self.last_throttle_remaining = None
+        self.last_throttle_type = None
+        self.last_retry_count = 0
+        self.last_response_size = None
 
     def _headers(self) -> dict:
         headers = {"Accept": "application/json"}
@@ -29,13 +34,14 @@ class KeapClient:
     def request(self, method: str, path: str, **kwargs) -> requests.Response:
         url = self.base + path
         r = self.session.request(method, url, headers=self._headers(), timeout=60, **kwargs)
-        # Soft-throttle: if headers indicate low budget, sleep a bit
-        try:
-            avail = int(r.headers.get("x-keap-product-throttle-available", "1000"))
-            if avail < 50:
-                time.sleep(1.0)
-        except ValueError:
-            pass
+        
+        # Track metrics
+        self.last_response_size = len(r.content)
+        self.last_retry_count = getattr(r, 'retry_count', 0)
+        
+        # Enhanced throttle handling
+        self._handle_throttle_headers(r)
+        
         if r.status_code == 401 and not self.cfg.api_key:
             tb = load_token_bundle(self.cfg)
             if tb:
@@ -44,6 +50,56 @@ class KeapClient:
                 r = self.session.request(method, url, headers=self._headers(), timeout=60, **kwargs)
         r.raise_for_status()
         return r
+    
+    def _handle_throttle_headers(self, response: requests.Response) -> None:
+        """Handle Keap throttle headers and implement appropriate backoff."""
+        headers = response.headers
+        
+        # Check various throttle headers
+        throttle_headers = {
+            'x-keap-product-throttle-available': 'product',
+            'x-keap-api-throttle-available': 'api',
+            'x-keap-rate-limit-remaining': 'rate_limit',
+            'x-ratelimit-remaining': 'rate_limit_alt'
+        }
+        
+        min_available = float('inf')
+        throttle_type = None
+        
+        for header, throttle_name in throttle_headers.items():
+            if header in headers:
+                try:
+                    available = int(headers[header])
+                    if available < min_available:
+                        min_available = available
+                        throttle_type = throttle_name
+                except (ValueError, TypeError):
+                    continue
+        
+        # Track throttle metrics
+        self.last_throttle_remaining = int(min_available) if min_available != float('inf') else None
+        self.last_throttle_type = throttle_type
+        
+        # Implement backoff based on throttle status
+        if min_available != float('inf'):
+            if min_available < 10:
+                # Critical throttle - wait longer
+                wait_time = 5.0
+                print(f"Critical throttle detected ({throttle_type}: {min_available}), waiting {wait_time}s")
+                time.sleep(wait_time)
+            elif min_available < 50:
+                # Low throttle - moderate wait
+                wait_time = 2.0
+                print(f"Low throttle detected ({throttle_type}: {min_available}), waiting {wait_time}s")
+                time.sleep(wait_time)
+            elif min_available < 100:
+                # Medium throttle - short wait
+                wait_time = 0.5
+                print(f"Medium throttle detected ({throttle_type}: {min_available}), waiting {wait_time}s")
+                time.sleep(wait_time)
+            else:
+                # Good throttle level - no wait needed
+                pass
 
     def fetch_all(self, path: str, params: dict | None = None, limit: int = 1000):
         """Yield items across limit/offset pagination."""

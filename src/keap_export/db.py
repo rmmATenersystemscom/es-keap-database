@@ -1,6 +1,8 @@
 from __future__ import annotations
 import json
 import psycopg2
+import psycopg2.extras
+from datetime import datetime
 from typing import Dict, Any, Optional
 from .config import Settings
 
@@ -14,9 +16,18 @@ def get_conn(cfg: Settings):
         password=cfg.db_password
     )
 
-def to_jsonb(obj: Any) -> str:
-    """Convert Python object to JSON string for JSONB storage."""
-    return json.dumps(obj, ensure_ascii=False)
+def to_jsonb(obj: Any) -> psycopg2.extras.Json:
+    """Convert Python object to psycopg2 Json object for JSONB storage."""
+    def json_serializer(o):
+        """JSON serializer for objects not serializable by default json code"""
+        if isinstance(o, datetime):
+            return o.isoformat()
+        raise TypeError(f"Object of type {type(o)} is not JSON serializable")
+    
+    # psycopg2.extras.Json will handle the JSON serialization automatically
+    # We just need to ensure datetime objects are converted first
+    serialized = json.loads(json.dumps(obj, ensure_ascii=False, default=json_serializer))
+    return psycopg2.extras.Json(serialized)
 
 def upsert_user(conn, row: Dict[str, Any]) -> None:
     """Upsert a user/owner record."""
@@ -88,6 +99,13 @@ def upsert_tag(conn, row: Dict[str, Any]) -> None:
 
 def upsert_company(conn, row: Dict[str, Any]) -> None:
     """Upsert a company record."""
+    # Convert datetime objects to strings for PostgreSQL
+    processed_row = row.copy()
+    if processed_row.get('created_at') and isinstance(processed_row['created_at'], datetime):
+        processed_row['created_at'] = processed_row['created_at'].isoformat()
+    if processed_row.get('updated_at') and isinstance(processed_row['updated_at'], datetime):
+        processed_row['updated_at'] = processed_row['updated_at'].isoformat()
+    
     with conn.cursor() as cur:
         cur.execute(
             """
@@ -106,7 +124,7 @@ def upsert_company(conn, row: Dict[str, Any]) -> None:
                 updated_at=excluded.updated_at,
                 raw=excluded.raw
             """,
-            row,
+            processed_row,
         )
 
 def upsert_contact(conn, row: Dict[str, Any]) -> None:
@@ -114,8 +132,8 @@ def upsert_contact(conn, row: Dict[str, Any]) -> None:
     with conn.cursor() as cur:
         cur.execute(
             """
-            insert into keap.contacts (id, company_id, given_name, family_name, email, phone, address, city, state, postal_code, country_code, owner_id, created_at, updated_at, raw)
-            values (%(id)s, %(company_id)s, %(given_name)s, %(family_name)s, %(email)s, %(phone)s, %(address)s, %(city)s, %(state)s, %(postal_code)s, %(country_code)s, %(owner_id)s, %(created_at)s, %(updated_at)s, %(raw)s)
+            insert into keap.contacts (id, company_id, given_name, family_name, email, phone, address, city, state, postal_code, country_code, owner_id, middle_name, email_status, email_opted_in, score_value, tag_ids, email_addresses, phone_numbers, addresses, created_at, updated_at, raw)
+            values (%(id)s, %(company_id)s, %(given_name)s, %(family_name)s, %(email)s, %(phone)s, %(address)s, %(city)s, %(state)s, %(postal_code)s, %(country_code)s, %(owner_id)s, %(middle_name)s, %(email_status)s, %(email_opted_in)s, %(score_value)s, %(tag_ids)s, %(email_addresses)s, %(phone_numbers)s, %(addresses)s, %(created_at)s, %(updated_at)s, %(raw)s)
             on conflict (id) do update set
                 company_id=excluded.company_id,
                 given_name=excluded.given_name,
@@ -128,6 +146,14 @@ def upsert_contact(conn, row: Dict[str, Any]) -> None:
                 postal_code=excluded.postal_code,
                 country_code=excluded.country_code,
                 owner_id=excluded.owner_id,
+                middle_name=excluded.middle_name,
+                email_status=excluded.email_status,
+                email_opted_in=excluded.email_opted_in,
+                score_value=excluded.score_value,
+                tag_ids=excluded.tag_ids,
+                email_addresses=excluded.email_addresses,
+                phone_numbers=excluded.phone_numbers,
+                addresses=excluded.addresses,
                 created_at=excluded.created_at,
                 updated_at=excluded.updated_at,
                 raw=excluded.raw
