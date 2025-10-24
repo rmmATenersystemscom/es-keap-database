@@ -1,0 +1,31 @@
+[Unit]
+Description=Keap OAuth Callback (local loopback behind Nginx)
+After=network.target
+
+[Service]
+Type=simple
+User=keap
+Group=keap
+WorkingDirectory=/opt/es-keap-database
+Environment=PYTHONPATH=/opt/es-keap-database/src
+EnvironmentFile=/opt/es-keap-database/.env
+# Enforce env for CSRF state (must match your authorize URL state=...)
+Environment=OAUTH_ALLOWED_STATE=keap-internal-auth
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+CapabilityBoundingSet=
+LockPersonality=true
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+
+ExecStart=/usr/bin/python3 /opt/es-keap-database/src/scripts/oauth_callback_server.py
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

@@ -3,7 +3,7 @@ from __future__ import annotations
 import http.server, socketserver, urllib.parse, os, sys
 
 # Ensure project src is importable (adjust if different path)
-sys.path.insert(0, "/opt/keap-export/src")
+sys.path.insert(0, "/opt/es-keap-database/src")
 
 from keap_export.config import Settings
 from keap_export.auth import exchange_code_for_tokens, save_token_bundle
@@ -12,7 +12,7 @@ PORT = int(os.getenv("OAUTH_PORT", "5000"))
 CALLBACK_PATH = os.getenv("OAUTH_CALLBACK_PATH", "/keap/oauth/callback")
 ALLOWED_STATE = os.getenv("OAUTH_ALLOWED_STATE")  # optional CSRF state check
 
-cfg = Settings()  # reads .env in /opt/keap-export
+cfg = Settings()  # reads .env in /opt/es-keap-database
 
 class Handler(http.server.BaseHTTPRequestHandler):
     def _write(self, status:int, body:str):
